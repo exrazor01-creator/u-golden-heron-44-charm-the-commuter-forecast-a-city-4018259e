@@ -70,6 +70,9 @@ def validate(text: str) -> None:
 
 def main() -> None:
     """Validate the entry, then write it to /output/entry.txt."""
+    # The bounty judges one line only: the forecast must stay a single line
+    # of at most 140 characters with no leading/trailing whitespace.
+    assert ENTRY == ENTRY.strip(), "entry must not start or end with whitespace"
     validate(ENTRY)
     output_path = Path("/output/entry.txt")
     output_path.parent.mkdir(parents=True, exist_ok=True)
